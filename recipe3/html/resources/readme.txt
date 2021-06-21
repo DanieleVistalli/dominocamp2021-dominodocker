@@ -1,0 +1,1 @@
+This resource is added to the custom image so that is always available when the server is run.

@@ -1,10 +1,10 @@
 [Unit]
-Description=domino-server1
+Description=domino-server3
 Requires=docker.service
 After=docker.service
 
 [Service]
-Environment=SERVICE_NAME=server1
+Environment=SERVICE_NAME=server3
 Restart=always
 User=root
 Group=docker

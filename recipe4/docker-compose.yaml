@@ -1,0 +1,50 @@
+version: '3.6'
+services:
+
+  domino:   # <- This will be the name of the service we use on command line
+
+    image: hclcom/domino:12.0.0
+    container_name: devserver
+    hostname: devserver.domino.local
+    stop_grace_period: 60s
+
+    # Server setup using V12 automation
+    # https://help.hcltechsw.com/domino/12.0.0/admin/inst_onetouch_preparing_sysenv.html
+    #
+    # SetupAutoConfigure: 1 enables v12 one touch setup process
+    # 
+
+    environment:
+      SetupAutoConfigure: 1
+      SetupAutoConfigureParams: /tmp/setup.json
+      LANG: en_US.UTF-8
+
+    # 
+    # Domino runs as "non-root" user but NSD needs Kernel's trace rights to perform diagnostic
+    # with cap_add we provide it
+    #
+
+    cap_add:
+      - SYS_PTRACE
+
+    #
+    # We now tell docker which ports we want to expose, by default our ports will be bound to 
+    # the a docker network with a dedicated IP
+    #
+
+    ports:
+      - ${SERVERIP}:1352:1352
+      - ${SERVERIP}:80:80
+      - ${SERVERIP}:443:443
+
+    volumes:
+      # Bind mount of the one touch setup configuration
+      - ./setup-first.json:/tmp/setup.json
+      # Volume mount for data
+      - domino_vol:/local/notesdata
+
+volumes:
+
+  domino_vol:
+    name: dominocamp_devserver
+    external: true

@@ -1,0 +1,25 @@
+{
+	"serverSetup": {
+		"server": {
+			"type": "first",
+			"name": "server2",
+			"domainName": "DominoCamp"
+		},
+		"network": {
+			"hostName": "server2.domino.local"
+		},
+		"org": {
+			"orgName": "DominoCamp",
+			"certifierPassword": "domino4ever"
+		},
+		"admin": {
+			"lastName": "Admin",
+			"password": "domino4ever",
+			"IDFilePath": "admin.id"
+		},
+		"notesINI": {
+			"MYCUSTOMVAR": "DominoCamp",
+			"ServerTasks": "Update,Replica,Router,AMgr,AdminP,CalConn,Sched,RnRMgr,LDAP,HTTP"
+		}
+	}
+}
