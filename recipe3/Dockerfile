@@ -7,7 +7,7 @@ USER root
 RUN dnf update && dnf install -y lftp nodejs
 
 # FAIL: Notesdata is created at server startup, better we use customdata.zip
-COPY ./html /loca/notesdata/html/demo
+# COPY ./html /loca/notesdata/html/demo
 
 # COPY customdata.zip
 
