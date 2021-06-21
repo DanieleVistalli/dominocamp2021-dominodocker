@@ -1,0 +1,21 @@
+{
+	"serverSetup": {
+		"server": {
+			"type": "first",
+			"name": "devserver",
+			"domainName": "DominoCamp"
+		},
+		"network": {
+			"hostName": "devserver.domino.local"
+		},
+		"org": {
+			"orgName": "DominoCamp",
+			"certifierPassword": "domino4ever"
+		},
+		"admin": {
+			"lastName": "Admin",
+			"password": "domino4ever",
+			"IDFilePath": "admin.id"
+		}
+	}
+}
